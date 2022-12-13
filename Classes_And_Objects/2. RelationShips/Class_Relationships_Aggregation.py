@@ -30,10 +30,13 @@ class Customer:
         self.set_address(Address)
 
     def set_name(self, name):
+        set = False
         if (type(name) is str):
             self.name = name 
+            set = True
         else:
             print("Invalid Name Value.")
+            return set
 
     def set_gender(self, gender): 
         set = False 
@@ -45,9 +48,22 @@ class Customer:
 
         if (set == False):
             print("bad Value for Gender Field (Enter only M/F).")
+        
+        return set
 
     def set_address(self, addr):
-        self.addr = addr
+        set = False
+        if (isinstance(addr, Address) is True):
+            self.addr = addr
+            set = True
+        else: 
+            print("Please Do Pass The Instance of Address.")
+
+    def change_profile(self, new_name, new_gender, new_address): 
+        self.set_name(new_name)
+        self.set_gender(new_gender)
+        self.set_address(new_address)
+
 
     def greet(self):
         if (self.addr != None):
@@ -68,18 +84,24 @@ class Address:
         self.set_pincode(pincode)
 
     def set_city(self, city):
+        set = False
         if (type(city) is str):
             self.city = city 
+            set = True
         else:
             print("Invalid City Value.")
-            return False
+        
+        return set
     
     def set_state(self, state):
+        set = False
         if (type(state) is str):
             self.state = state 
+            set = True
         else:
             print("Invalid State Value")
-            return False
+            
+        return set
 
     def set_pincode(self, pincode):
         set = False
@@ -93,24 +115,33 @@ class Address:
             return False
 
     def change_address(self, new_city, new_state, new_pin):
-        data = self.set_city(new_city)
-        if (data != False):
-            data = self.set_state(new_state)
+        set = False
+        set = self.set_city(new_city)
+        if (set != False):
+            set = self.set_state(new_state)
             
-            if (data != False):
-                data = self.set_pincode(new_pin)
+            if (set != False):
+                set = self.set_pincode(new_pin)
         
-        if data == False: 
-            return False
+        return set
+        
 
 
 if __name__ == "__main__":
-    addr = Address("Ahmedabad", "Gujarat", 201206)
-    customer1 = Customer("Prithvee", "M", addr)
+    addr1 = Address("Ahmedabad", "Gujarat", 201206)
+    addr2 = Address("City of Fear", "Fear State", 666666)
+
+    customer1 = Customer("Prithvee", "M", addr1)
+    customer2 = Customer("xyz", "F", addr2 )
 
     customer1.greet()
     if (customer1.addr.change_address(1212, "Gujarat", 370201) == False):
         print("Unable To Change Address.")
     
+    if (customer1.change_profile("xyz", "F", addr2) == False): 
+        print("Unable To Change Profile.")
+    
     print("\n")
+    # ? print(f"The Type of Addr Class is {type(addr)}.")
+    # ? <class.__main__.Address> or something like that.
     customer1.greet()
