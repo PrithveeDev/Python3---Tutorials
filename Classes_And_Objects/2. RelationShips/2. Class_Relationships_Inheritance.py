@@ -93,7 +93,13 @@ class Phone:
 
 
 class Smart_Phone(Phone):
-    pass
+    
+    # Q. If This Function Has Same Name as The Parent Class Name "buy_device"?
+    # Q. So, What does happen when you call it ? Does it call local function / Parents Class? 
+    # Ans: Hmm, This is Called -- PolyMorphism. (Method Overriding.)
+
+    def buy_device(self):
+        print("Buying A Smartphone.")
         
 
 # > Main Function.
@@ -101,17 +107,21 @@ class Smart_Phone(Phone):
 if __name__ == "__main__":
 
     Tutor1 = Tutor()
-
-    # ? Tutor1.register()
-    # ? Tutor1.login()
-    # ? Tutor1.make_video()
-    # ? Tutor1.answer()
-
-    Phone1 = Phone("Rs.19,999/-", "Xiaomi Redmi Note 11", "48 Mega Piels")
-    # ? Phone1.tell_me_about()
-
     Smart_Phone1 = Smart_Phone("Rs.29,999/-", "Xiaomi MI 11 Ultra 5G", "200 Mega Piels")
+
+    print("------------------ User/ Student Classes (Start) ---------- ")
+    Tutor1.register()
+    Tutor1.login()
+    Tutor1.make_video()
+    Tutor1.answer()
+    print("------------------ User/ Student Classes (End) ---------- ", end= "\n\n")
+
+
+
+    print("------------------ Phone/ SmartPhone Classes (Start) ---------- ")
     Smart_Phone1.tell_me_about()
+    Smart_Phone1.buy_device()
+    print("------------------ User/ Student Classes (End) ---------- ", end="\n\n")
 
 
 
