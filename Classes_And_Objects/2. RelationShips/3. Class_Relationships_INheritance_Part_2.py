@@ -71,15 +71,16 @@ class Phone:
     def buy_device(self):
         print("Buying A Phone.")
 
-    def return_device(self):
-        print("Returning A Phone.")
-
 
 class Smart_Phone(Phone):
 
     def buy_device(self):
         print("Buying A Smartphone.")
-        
+        super().buy_device()
+
+        # Q. What Does Super.Function() Do ?
+        # Ans:  Hmm, What it actually des -- it wakes up the parent's class with "function()'s" 
+        # >     Name. That means "super().buy_device()" will call the parent's function.     
 
 
 # --------------- SmartPhone/ Phone (End)---------------
@@ -91,3 +92,6 @@ if __name__ == "__main__":
     # ? print(f"Child Val is ({c1.get_val()}) and Child Num is ({c1.get_num()})")
     # Imp! This Above "Print()" Statement will give an error since, then
 
+    smart_phone = Smart_Phone("Rs. 19,000/-", "Xiaomi Redmi K40 Pro", "48 MegaPixels")
+    smart_phone.tell_me_about()
+    smart_phone.buy_device()
