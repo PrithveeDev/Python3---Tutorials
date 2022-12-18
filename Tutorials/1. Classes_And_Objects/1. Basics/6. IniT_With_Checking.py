@@ -68,7 +68,6 @@ class Grocery_Updated:
         else: 
             return False
 
-
     # > This is Representation magis Method.     
     def __repr__(self):
         return f"Grocery(\"{self.name}\")"
