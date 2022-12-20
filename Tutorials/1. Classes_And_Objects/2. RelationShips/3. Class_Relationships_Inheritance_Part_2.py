@@ -78,7 +78,7 @@ class Smart_Phone(Phone):
         print("Buying A Smartphone.")
         super().buy_device()
 
-        # Q. What Does Super.Function() Do ?
+        # Q. What Does "Super.Function()" Do ?
         # Ans:  Hmm, What it actually des -- it wakes up the parent's class with "function()'s" 
         # >     Name. That means "super().buy_device()" will call the parent's function.     
 
