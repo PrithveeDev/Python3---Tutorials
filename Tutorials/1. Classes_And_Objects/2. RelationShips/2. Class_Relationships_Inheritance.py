@@ -102,6 +102,124 @@ class Smart_Phone(Phone):
         print("Buying A Smartphone.")
         
 
+# ------------------------------ 
+# Imp! So, Let's Have a New --- 
+
+
+# ------------------- Parent/ Child (Start)---------------
+class Parent:
+    def __init__(self, num):
+        self.__num = num
+    
+    def get_num(self):
+        return self.__num
+
+
+
+class Child(Parent):
+
+    def __init__(self, val, num):
+        self.__val = val
+
+
+    def get_val(self):
+        return self.__val
+# --------------- Parent/ Child (End)---------------
+
+
+
+# --------------- SmartPhone/ Phone (Start)---------------
+
+class Phone: 
+    def __init__(self, price, brand, camera):
+
+        self.set_price(price)
+        self.set_brand(brand)
+        self.set_camera(camera)
+        
+
+    def set_price(self, price): 
+        set = False
+        if (type(price) is str):
+            self.price = price
+            set = True
+        else:
+            print("Unable to set Price.")
+        
+        return set
+    
+    def set_brand(self, brand):
+        set = False
+        if (type(brand) is str):
+            self.brand = brand
+            set = True
+        else:
+            print("Unable to set Brand.")
+        
+        return set
+        
+    def set_camera(self, camera):
+        set = False
+        if (type(camera) is str):
+            self.camera = camera
+            set = True
+        else:
+            print("Unable to set Camera.")
+        
+        return set
+        
+    def tell_me_about(self):
+        print(f"The {self.brand} Mobile is quite good, with a price of {self.price}, along with a camera system of {self.camera}.")
+
+
+    def buy_device(self):
+        print("Buying A Phone.")
+
+
+class Smart_Phone(Phone):
+
+    def buy_device(self):
+        print("Buying A Smartphone.")
+        super().buy_device()
+
+        # Q. What Does "Super.Function()" Do ?
+        # Ans:  Hmm, What it actually des -- it wakes up the parent's class with "function()'s" 
+        # >     Name. That means "super().buy_device()" will call the parent's function.     
+# --------------- SmartPhone/ Phone (End)---------------
+
+# --------------- Phone (Start)---------------
+# > H'mm Let's see the final "Most Complete" Type of Inheritance.
+
+class Phone_FinaL:
+    Initiated = False
+    def __init__(self, brand : str, name : str, price : float, os: str, camera: str):
+        try: 
+            assert len(camera) > 0,   f"Bad Camera Fed."
+            assert len(brand) > 0,  f"Bad Brand Name Fed."
+            assert len(name) > 0,   f"Bad Name Fed."
+            assert len(os) > 0,   f"Bad Os Value Fed."
+            
+            assert price > 0,       f"Bad Price Fed."
+
+        except Exception as exe: 
+            print(f"Exception Occured During Assertion {exe}.")
+        else:
+            self.camera = camera
+            self.price = price
+            self.brand = brand 
+            self.name = name
+            self.os = os
+
+            # Imp! Checker For Checking if Class is Initialised Or Values Are Invalid.
+            Phone.Initiated = True
+    
+    def tell_me_the_specs(self):
+        if (Phone.Initiated == True):
+            return f"The Phone {self.brand} {self.name} has a Camera of {self.camera} with a Operating System of {self.os}, Price: {self.price} /-"
+# --------------- Phone / Phone (End)---------------
+
+
+
 # > Main Function.
 
 if __name__ == "__main__":
@@ -125,5 +243,19 @@ if __name__ == "__main__":
 
 
 
+    print("------------------ Child Classes (Start) ---------- ")
+    c1 = Child(12, 13)
+    # ? print(f"Child Val is ({c1.get_val()}) and Child Num is ({c1.get_num()})")
+    # Imp! This Above "Print()" Statement will give an error since, then
 
-    
+    smart_phone = Smart_Phone("Rs. 19,000/-", "Xiaomi Redmi K40 Pro", "48 MegaPixels")
+    smart_phone.tell_me_about()
+    smart_phone.buy_device()
+    print("------------------ Child Classes (End) ---------- ", end="\n\n")
+
+
+    print("------------------ Phone Class FinaL Classes (Start) ---------- ")
+    device1 = Phone_FinaL("Apple", "IPhone 13 Pro", 119990, "IoS 16.1", "50 MpX")
+    print(device1.tell_me_the_specs())
+
+    print("------------------ Phone Class FinaL Classes (End) ---------- ", end="\n\n")
