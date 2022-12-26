@@ -216,6 +216,15 @@ class Phone_FinaL:
     def tell_me_the_specs(self):
         if (Phone.Initiated == True):
             return f"The Phone {self.brand} {self.name} has a Camera of {self.camera} with a Operating System of {self.os}, Price: {self.price} /-"
+
+
+class Smart_Phone_FinaL(Phone_FinaL):
+    def __init__(self, brand: str, name: str, price: float, os: str, camera: str):
+        super().__init__(brand, name, price, os, camera)
+
+    def who_are_you(self):
+        return f"I'm a Smartphone {self.brand} {self.name}."
+
 # --------------- Phone / Phone (End)---------------
 
 
@@ -256,6 +265,9 @@ if __name__ == "__main__":
 
     print("------------------ Phone Class FinaL Classes (Start) ---------- ")
     device1 = Phone_FinaL("Apple", "IPhone 13 Pro", 119990, "IoS 16.1", "50 MpX")
+    device2 = Smart_Phone_FinaL("Xiaomi", "MI 13 Pro Ultra", 119999, "MiUi", "200 MegaPixels")
     print(device1.tell_me_the_specs())
+    print(device2.tell_me_the_specs())
+    print(device2.who_are_you())
 
     print("------------------ Phone Class FinaL Classes (End) ---------- ", end="\n\n")
