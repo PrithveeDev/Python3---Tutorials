@@ -214,7 +214,7 @@ class Phone_FinaL:
             Phone.Initiated = True
     
     def tell_me_the_specs(self):
-        if (Phone.Initiated == True):
+        if (Phone_FinaL.Initiated == True):
             return f"The Phone {self.brand} {self.name} has a Camera of {self.camera} with a Operating System of {self.os}, Price: {self.price} /-"
 
 
