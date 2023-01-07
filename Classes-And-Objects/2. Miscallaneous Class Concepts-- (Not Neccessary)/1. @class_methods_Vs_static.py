@@ -52,7 +52,7 @@ class Grocery_Updated:
             return False
 
 
-    # > This is Representation magis Method.     
+    # > This is Representation magic Method.     
     def __repr__(self):
         return f"Grocery(\"{self.name}\")"
 
